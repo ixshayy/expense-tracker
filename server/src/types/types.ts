@@ -20,7 +20,6 @@ export interface UserData {
   name: string;
   email: string;
 }
-
 export interface AuthenticatedRequest extends Request {
   user: UserData;
 }
@@ -33,6 +32,8 @@ export interface MongoDocument {
 
 export interface ExpenseDocument extends MongoDocument, Expense {}
 export interface UserDocument extends MongoDocument, User {}
+export interface UserDataDocument extends MongoDocument, UserData {}
+
 
 export interface AuthResponse {
   _id: string;
