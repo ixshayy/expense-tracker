@@ -4,13 +4,6 @@
 <h3>A simple expense tracker application with authentication built the MERN stack.</h3>
 </p>
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/maciekt07/ExpenseTracker?color=%230061FF)
-![GitHub last commit](https://img.shields.io/github/last-commit/maciekt07/ExpenseTracker?color=%230061FF)
-![GitHub License](https://img.shields.io/github/license/maciekt07/ExpenseTracker?color=%230061FF)
-
-<p align="center">
-<img src="screenshots/preview.png" width="650px" />
-</p>
 
 ## Tech stack
 
@@ -90,8 +83,6 @@ npm install
 cd ..
 npm run dev
 ```
-
-<img src="screenshots/console.png" width="400px" />
 
 The server will start running on port 8000.
 
