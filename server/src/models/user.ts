@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { User } from "@shared/types/types";
+import { User } from "../types/types";
 
 const userSchema = new mongoose.Schema<User>(
   {

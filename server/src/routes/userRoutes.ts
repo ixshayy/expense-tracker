@@ -25,4 +25,4 @@ router.post(
 
 router.post("/remove-profile-picture", protect, removeProfilePicture);
 
-export { router as UserRouter };
+export default router;

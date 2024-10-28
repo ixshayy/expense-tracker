@@ -20,6 +20,24 @@ export interface UserData {
   name: string;
   email: string;
 }
+
 export interface AuthenticatedRequest extends Request {
   user: UserData;
+}
+
+export interface MongoDocument {
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ExpenseDocument extends MongoDocument, Expense {}
+export interface UserDocument extends MongoDocument, User {}
+
+export interface AuthResponse {
+  _id: string;
+  name: string;
+  email: string;
+  profilePicture?: string;
+  token: string;
 }

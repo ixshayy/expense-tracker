@@ -2,10 +2,10 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import path from "path";
-import connectDB from "./config/db";
 import { errorHandler } from "./middleware/errorMiddleware";
-import { ExpenseRouter } from "./routes/expenseRoutes";
-import { UserRouter } from "./routes/userRoutes";
+import ExpenseRouter  from "./routes/expenseRoutes";
+import  UserRouter  from "./routes/userRoutes";
+import connectDB from "./config/db";
 
 const app = express();
 const port = process.env.PORT || 8000;

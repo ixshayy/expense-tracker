@@ -17,4 +17,4 @@ router.put("/:id", protect, updateExpense);
 
 router.delete("/:id", protect, deleteExpense);
 
-export { router as ExpenseRouter };
+export default  router;
