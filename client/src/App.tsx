@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import UserProfile from "./pages/UserProfile";
 import { useEffect } from "react";
 import { useSystemTheme } from "./hooks/useSystemTheme";
+import Transactions from "./pages/transactions/Transactions";
 
 function App() {
   const theme = useSelector((state: RootState) => state.settings.settings.theme);
@@ -76,6 +77,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add" element={<Add />} />
+        <Route path="/transactions" element={<Transactions />} />
         <Route path="/user" element={<UserProfile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

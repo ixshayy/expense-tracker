@@ -6,6 +6,9 @@ import { AppDispatch, RootState } from "../app/store";
 import logo from "../assets/logo512.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
+import ThemeSwitcher from "./ThemeSwitch";
+
+
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,7 +27,12 @@ function Navbar() {
   return (
     <div className="relative">
       {/* Backdrop */}
-      {isSidebarOpen && <div className="fixed inset-0 bg-black/40 z-20" onClick={closeSidebar} />}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-20"
+          onClick={closeSidebar}
+        />
+      )}
 
       {/* Sidebar */}
       <div
@@ -79,7 +87,11 @@ function Navbar() {
           </div>
           {user && (
             <div className="py-4 px-2 border-t border-base-300">
-              <Link to="/user" className="flex items-center space-x-2" onClick={closeSidebar}>
+              <Link
+                to="/user"
+                className="flex items-center space-x-2"
+                onClick={closeSidebar}
+              >
                 {user.profilePicture ? (
                   <img
                     className="w-8 h-8 rounded-full"
@@ -111,7 +123,11 @@ function Navbar() {
                 <Link to="/" className="btn btn-ghost hover:bg-base-300">
                   Home
                 </Link>
-                <button className="btn btn-error btn-outline" onClick={handleLogout}>
+                <ThemeSwitcher/>
+                <button
+                  className="btn btn-error btn-outline"
+                  onClick={handleLogout}
+                >
                   <FaArrowRightFromBracket /> Logout
                 </button>
               </>
@@ -120,7 +136,10 @@ function Navbar() {
                 <Link to="/login" className="btn btn-ghost hover:bg-base-300">
                   Login
                 </Link>
-                <Link to="/register" className="btn btn-ghost hover:bg-base-300">
+                <Link
+                  to="/register"
+                  className="btn btn-ghost hover:bg-base-300"
+                >
                   Register
                 </Link>
               </>
@@ -142,7 +161,10 @@ function Navbar() {
               </Link>
             )}
           </div>
-          <button className="lg:hidden text-2xl" onClick={() => setIsSidebarOpen(true)}>
+          <button
+            className="lg:hidden text-2xl"
+            onClick={() => setIsSidebarOpen(true)}
+          >
             <FaBars />
           </button>
         </div>

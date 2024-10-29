@@ -3,10 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../app/store";
 import { getExpenses, reset } from "../features/expenses/expenseSlice";
-import ExpenseItem from "../components/ExpenseItem";
 import Loading from "../components/Loading";
-import ThemeSwitcher from "../components/ThemeSwitch";
-import { ExpenseDocument } from "@shared/types/types";
+import { ExpenseDocument } from "../types/types";
 import { FaPlus, FaWallet } from "react-icons/fa6";
 import { formatCurrency } from "../utils/currencyFormatter";
 import WeeklyChart from "../components/WeeklyChart";
@@ -33,12 +31,6 @@ function Home() {
   if (isLoading) {
     return <Loading />;
   }
-
-  const sortedExpenses = [...(expenses as ExpenseDocument[])].sort((a, b) => {
-    const dateA = new Date(a.customDate || a.createdAt);
-    const dateB = new Date(b.customDate || b.createdAt);
-    return dateB.getTime() - dateA.getTime();
-  });
 
   // Calculate total income for all time
   const totalIncome = (expenses as ExpenseDocument[])
@@ -73,18 +65,7 @@ function Home() {
 
       <WeeklyChart expenses={expenses as ExpenseDocument[]} />
 
-      <div>
-        <p className="mb-2 ml-2">Recent Transactions</p>
-        {sortedExpenses.length > 0 ? (
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {sortedExpenses.map((expense) => (
-              <ExpenseItem key={expense._id} expense={expense} />
-            ))}
-          </div>
-        ) : (
-          <p>No expenses found</p>
-        )}
-      </div>
+     
       <Link to="/add">
         <button
           className="fixed bottom-5 right-5 btn btn-circle btn-primary btn-lg tooltip tooltip-left"
@@ -95,7 +76,6 @@ function Home() {
           </div>
         </button>
       </Link>
-      <ThemeSwitcher />
     </div>
   );
 }
