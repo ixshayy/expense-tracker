@@ -5,6 +5,7 @@ import { AppDispatch } from "src/app/store";
 import { deleteExpense } from "../../features/expenses/expenseSlice";
 import { ExpenseDocument } from "src/types/types";
 import { formatCurrency } from "../../utils/currencyFormatter";
+import { FaRupeeSign } from "react-icons/fa";
 
 interface ExpenseItemProps {
   expense: ExpenseDocument;
@@ -27,27 +28,23 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({ expense }) => {
     <li className="pb-3 sm:pb-4">
       <div className="flex items-center space-x-4 rtl:space-x-reverse">
         <div className="flex-shrink-0">
-          <img
-            className="w-8 h-8 rounded-full"
-            src="/docs/images/people/profile-picture-1.jpg"
-            alt="Neil image"
-          />
+          {expense.type === "expense" ? <FaRupeeSign fill="red"/>  : <FaRupeeSign fill="green"/>}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-            {expense.type}
-          </p>
-          <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+          <p className="text-sm font-medium truncate ">
             {expense.text}
           </p>
+          {/* <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+            {expense.text}
+          </p> */}
         </div>
-        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+        <div className="inline-flex items-center text-base font-semibold ">
         {expense.type === "expense" ? "-" : "+"}
         {formatCurrency(expense.amount)}
         </div>
-        <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+        <div className="inline-flex items-center text-base font-semibold ">
           <button onClick={handleDelete} className="btn btn-error btn-sm mt-2">
-            <FaTrashCan size={16} /> Delete
+            <FaTrashCan size={14} />
           </button>
         </div>
       </div>

@@ -56,6 +56,13 @@ function Navbar() {
                 >
                   Home
                 </Link>
+                <Link
+                  to="/transactions"
+                  className="block p-2 text-lg hover:bg-base-300 rounded"
+                  onClick={closeSidebar}
+                >
+                  Transactions
+                </Link>
                 <button
                   className="btn btn-error w-full flex items-center space-x-2"
                   onClick={() => {
@@ -122,6 +129,12 @@ function Navbar() {
               <>
                 <Link to="/" className="btn btn-ghost hover:bg-base-300">
                   Home
+                </Link>
+                <Link
+                  to="/transactions"
+                  className="btn btn-ghost hover:bg-base-300"
+                >
+                  Transactions
                 </Link>
                 <ThemeSwitcher/>
                 <button

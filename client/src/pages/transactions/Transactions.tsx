@@ -30,22 +30,21 @@ const Transactions: React.FC = () => {
 
   const handleReloadExpenses = () => {
     dispatch(getExpenses({} as ExpenseDocument));
-    console.log("clicked");
   }
 
   return (
     <div>
-      <button style={{
+      {/* <button style={{
         position : "absolute", 
         top : "100px", 
         left : "100px", 
         zIndex : 100, 
         border : "2px solid black"
-      }} onClick={handleReloadExpenses}>Reload</button>
-      <p className="mb-2 ml-2">Recent Transactions</p>
+      }} onClick={handleReloadExpenses}>Reload</button> */}
+
       {sortedExpenses.length > 0 ? (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-10">
-          <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="flex justify-center items-center mt-24">
+          <ul className="divide-y divide-gray-200 w-4/5 max-w-6xl  dark:divide-gray-700">
           {sortedExpenses.map((expense) => (
             <ExpenseItem key={expense._id} expense={expense} />
           ))}
