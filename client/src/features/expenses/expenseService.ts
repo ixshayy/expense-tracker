@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Expense } from "@shared/types/types";
+import { Expense, ExpenseDocument } from "../../types/types";
 
 const API_URL = "api/expenses/";
 
@@ -32,6 +32,13 @@ const getExpenseDetails = async (expenseId: string, token: string) => {
   }
 };
 
+
+//update expense
+const updateExpense = async (expenseId: string, expenseData : Expense , token: string) => {
+  const response = await axios.put(API_URL + expenseId, expenseData, createConfig(token));
+  return response.data;
+};
+
 // delete expense
 const deleteExpense = async (expenseId: string, token: string) => {
   const response = await axios.delete(API_URL + expenseId, createConfig(token));
@@ -43,5 +50,6 @@ const expenseService = {
   getExpenses,
   getExpenseDetails,
   deleteExpense,
+  updateExpense
 };
 export default expenseService;

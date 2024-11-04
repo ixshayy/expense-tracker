@@ -34,7 +34,7 @@ function ExpenseItem({ expense }: { expense: ExpenseDocument }) {
 
       <div className="flex justify-start">
         <button onClick={handleDelete} className="btn btn-error btn-sm mt-2">
-          <FaTrashCan size={16} /> Delete
+          <FaTrashCan size={16}  /> Delete
         </button>
       </div>
     </div>

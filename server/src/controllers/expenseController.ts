@@ -43,6 +43,7 @@ export const createExpense = asyncHandler(async (req: Request, res: Response) =>
 });
 
 export const updateExpense = asyncHandler(async (req: Request, res: Response) => {
+  
   const expense = await Expense.findById(req.params.id);
   if (!expense) {
     res.status(400);

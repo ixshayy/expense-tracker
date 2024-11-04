@@ -77,6 +77,27 @@ export const getExpenseDetails = createAsyncThunk<Expense, string, { state: Root
   },
 );
 
+// Update expense
+export const updateExpense = createAsyncThunk<Expense, { id: string; expenseData: Expense }, AsyncThunkConfig>(
+  "expense/update",
+  async ({ id, expenseData }, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState() as RootState;
+      const token = state.auth.user?.token;
+      return await expenseService.updateExpense(id, expenseData, token || "");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+
+
 // Delete expense
 export const deleteExpense: AsyncThunk<{ id: string }, string, AsyncThunkConfig> = createAsyncThunk(
   "expsense/delete",
@@ -135,6 +156,26 @@ export const expenseSlice = createSlice({
         state.isError = true;
         state.message = action.payload as string;
       })
+
+
+          // Update expense
+    .addCase(updateExpense.pending, (state) => {
+      state.isLoading = true;
+    })
+    .addCase(updateExpense.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isSuccess = true;
+
+      // Update the specific expense in the state
+      state.expenses = state.expenses.map((expense) =>
+        (expense as ExpenseDocument)._id === (action.payload as ExpenseDocument)._id ? action.payload : expense
+      );
+    })
+    .addCase(updateExpense.rejected, (state, action) => {
+      state.isLoading = false;
+      state.isError = true;
+      state.message = action.payload as string;
+    })
 
       // Delete expense
       .addCase(deleteExpense.pending, (state) => {
